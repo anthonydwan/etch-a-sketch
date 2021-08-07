@@ -13,9 +13,18 @@
 }
 
 .squareDiv{
-    border: 0.5px solid rgb(224, 224, 224);
+    border: 0.5px solid rgb(121, 121, 121);
 }
 
 .squareDiv:hover{
     background-color: black;
+}
+
+.drawnBlack{
+    background-color: black;
+    transition: all 0.25s ease-in-out;
+}
+
+.reset{
+    background-color: white;
 }
