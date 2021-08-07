@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#container{
+    height: 400px;
+    width: 400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(32, 1fr);
+    grid-template-rows: repeat(32, 1fr);
+}
+
+.squareDiv{
+    border: 0.5px solid rgb(224, 224, 224);
+}
+
+.squareDiv:hover{
+    background-color: black;
+}
