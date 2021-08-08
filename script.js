@@ -1,32 +1,27 @@
 const container = document.querySelector("#container")
 const clearButton = document.querySelector("#clearButton")
 
-function makeDiv() {
+function makeDiv(color) {
     for (let i = 0; i < 32 * 32; i++) {
         const square = document.createElement("div");
         square.classList.add("squareDiv");
-        square.addEventListener("mousemove", drawnSquare)
+        square.addEventListener("mousemove", color, false)
         container.appendChild(square);
     }
 }
 
-function drawnSquare() {
-    this.classList.add("drawnBlack")
+function drawBlack() {
+    this.style.cssText = "background-color: black; transition: all 0.25s ease-in-out;"
 }
-
-makeDiv()
 
 function clearAll() {
     const squares = document.querySelectorAll(".squareDiv");
-    for (square of squares) {
-        timeoutReset(square)
-    };
+    for(let i = 0; i < squares.length; i++){
+        squares[i].style.cssText = "background-color: white; transition: all 0.25s ease-in-out;"
+    }
 }
-
-function timeoutReset(square){
-    setTimeout(square.classList.add("reset"), 1000);
-    setTimeout(square.className = "squareDiv", 2000);
-};
 
 clearButton.addEventListener('click', clearAll)
 
+
+makeDiv(drawBlack);
