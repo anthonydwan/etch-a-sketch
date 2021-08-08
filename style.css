@@ -4,16 +4,16 @@
 }
 
 #container{
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(32, 1fr);
     grid-template-rows: repeat(32, 1fr);
+    box-shadow: 0px 0px 3px 3px rgb(151, 151, 151);
 }
 
 .squareDiv{
-    border: 0.5px solid rgb(121, 121, 121);
 }
 
 .squareDiv:hover{
