@@ -3,24 +3,106 @@
     padding: 0px;
 }
 
+#entireObject{
+    display: flex;
+    margin: 100px auto;
+}
+
+
+
+#frame{
+    display: flex;
+    height: 700px;
+    width: 880px;
+    background-color: royalblue;
+    border-radius: 3em;
+    box-shadow: 2px 4px 10px black;
+}
+
 #container{
-    height: 500px;
-    width: 500px;
-    margin: auto;
+    height: 512px;
+    width: 704px;
+    margin: 70px auto;
     display: grid;
-    grid-template-columns: repeat(32, 1fr);
-    grid-template-rows: repeat(32, 1fr);
-    box-shadow: 0px 0px 3px 3px rgb(151, 151, 151);
+    grid-template-columns: repeat(88, 1fr);
+    grid-template-rows: repeat(64, 1fr);
+    background-color: rgb(240, 240, 240);
+}
+
+
+#penObject{
+    display: grid;
+    grid-template-columns: 60px 600px 60px;
+    grid-template-rows: 48px;
+}
+
+#penTip {
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -12px;
+    left: 0;
+    margin: 0px;
+    border-top: 12px solid transparent;
+    border-right: 30px solid black;
+    border-bottom: 12px solid transparent;
+    /* border-radius: 18px; */
+  }
+
+ .penTipColor #penTip{
+    border-right: 30px solid red;
+}
+
+#penTipOuter{
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: 24px solid transparent;
+    border-right: 60px solid rgb(180, 180, 180);
+    border-bottom: 24px solid transparent;
+}
+
+#penBody{
+    position: relative;
+    width: 596px;
+    border-right: 4px solid black;
+    height: 48px;
+    background-color: rgb(180, 180, 180);
+}
+
+@keyframes eraserActivate {
+    0% {background-color: rgb(220, 220, 220)}
+    50% {background-color: rgb(100, 100, 100)}
+    100% {background-color: rgb(220, 220, 220)}
+}
+
+#eraserEnd{
+    position: relative;
+    top: 24px;
+    left: 12px;
+    transform: translate(-50%, -50%) rotate(90deg);
+    height: 24px;
+    width: 48px;
+    border-radius: 48px 48px 0 0;
+    background-color: rgb(212, 212, 212);
+}
+
+.eraserActivated{
+    animation: eraserActivate 2s infinite;
 }
 
 .squareDiv{
+    transition: all 0.2s ease-in-out;
+    pointer-events:visible;
+    border-top:1px solid rgb(190, 190, 190);
+    border-left: 1px solid rgb(190, 190, 190);
 }
 
 .squareDiv:hover{
     background-color: black;
 }
 
-.reset{
-    background-color: white;
-    transition: all 0.6s ease-in-out;
+.eraser:hover{
 }
+
+

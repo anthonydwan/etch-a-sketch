@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,15 +9,30 @@
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Etch-a-sketch</h1>
     <button id="clearButton">clear</button>
-    <button id="blackButton">black</button>
-    <button id="colorButton">color</button>
-    <button id="eraserButton">eraser</button>
-    <div id="container">
+    <div id="entireObject">
+        <div id="frame">
+            <div id="container" draggable="false"></div>
+        </div>
+        <!-- <div id="penline1"></div> -->
+        <div id="penObject">
+            <div id="penTipOuter">
+                <div id="penTip" class="penTipColor"></div>
+            </div>
+            <div id="penBody">
+                <button id="blackButton">black</button>
+                <input type="color" id="specificColor">
+                <label for="specificColor">Pen Color</label>
+                <button id="randColorButton">color</button>
+                <button id="eraserButton">eraser</button>
+            </div>
+            <div id="eraserEnd"></div>
+        </div>
     </div>
+
 </body>
 
 </html>
-
