@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Poppins', sans-serif;
 }
 
 #entireObject{
@@ -8,10 +9,10 @@
     margin: 100px auto;
 }
 
-
-
 #frame{
-    display: flex;
+    display: grid;
+    grid-template-columns: 880px;
+    grid-template-rows: 80px 512px 108px;
     height: 700px;
     width: 880px;
     background-color: royalblue;
@@ -19,16 +20,19 @@
     box-shadow: 2px 4px 10px black;
 }
 
+#header{
+    margin: 0 auto;
+}
+
 #container{
     height: 512px;
     width: 704px;
-    margin: 70px auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(88, 1fr);
     grid-template-rows: repeat(64, 1fr);
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(220, 220, 220);
 }
-
 
 #penObject{
     display: grid;
@@ -44,13 +48,34 @@
     left: 0;
     margin: 0px;
     border-top: 12px solid transparent;
-    border-right: 30px solid black;
     border-bottom: 12px solid transparent;
-    /* border-radius: 18px; */
-  }
+    transition: border-color 0.5s ease-in-out;
+    border-radius: 18px;
+};
 
- .penTipColor #penTip{
-    border-right: 30px solid red;
+.penTipBlack{
+    border-right: 30px solid black;
+    transition: border-color 0.5s ease-in-out;
+};
+
+.penTipRandomColor{
+    animation: PenTipRandomColor 2s infinite;
+    transition: border-color 0.5s ease-in-out;
+};
+
+ 
+
+@keyframes PenTipRandomColor {
+    0% {border-right: 30px solid rgb(150, 9, 9)}
+    20%{border-right: 30px solid rgb(29, 141, 29)}
+    40% {border-right: 30px solid rgb(136, 39, 136)}
+    60% {border-right: 30px solid rgb(30, 30, 151)}   
+    80% {border-right: 30px solid rgb(170, 170, 58)}
+    100% {border-right: 30px solid rgb(158, 37, 37)}
+}
+
+.penTipRandomColorAnimationPause{
+    animation-play-state: paused;
 }
 
 #penTipOuter{
@@ -64,6 +89,9 @@
 
 #penBody{
     position: relative;
+    display: grid;
+    grid-template-columns: 100px 80px 80px 336px;
+    grid-template-rows: 48px;
     width: 596px;
     border-right: 4px solid black;
     height: 48px;
@@ -84,11 +112,49 @@
     height: 24px;
     width: 48px;
     border-radius: 48px 48px 0 0;
-    background-color: rgb(212, 212, 212);
+    background-color: rgb(220, 220, 220);
 }
 
 .eraserActivated{
     animation: eraserActivate 2s infinite;
+}
+
+button{
+    position: absolute;
+    border-radius: 5px;
+    height: 30px;
+    width: 60px;
+    border: 0;
+    margin-top : 8px;
+    margin-bottom: 2px;
+    box-shadow: 2px 2px 0 rgb(107, 107, 107);
+    transition: all 0.2s ease-in-out;
+}
+
+#colorPicker{
+    position: absolute;
+    border-radius: 5px;
+    height: 30px;
+    width: 60px;
+    border: 0;
+    margin-top : 8px;
+    margin-bottom: 2px;
+}
+
+button:hover{
+    margin-top: 6px;
+    margin-bottom: 4px;
+    box-shadow: 2px 4px 0 rgb(124, 124, 124);
+}
+
+#blackButton{
+    left: 30px;
+}
+
+button:hover{
+    margin-top: 6px;
+    margin-bottom: 4px;
+    box-shadow: 2px 4px 0 rgb(124, 124, 124);
 }
 
 .squareDiv{
@@ -102,7 +168,6 @@
     background-color: black;
 }
 
-.eraser:hover{
-}
+
 
 
