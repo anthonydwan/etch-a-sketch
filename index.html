@@ -14,28 +14,40 @@
 </head>
 
 <body>
-    
-    
     <div id="entireObject">
         <div id="frame">
-            <div id="header"><h1>Etch-a-sketch</h1></div>
+            <div id="frameTop">
+                <h1>Etch-a-sketch</h1>
+            </div>
             <div id="container" draggable="false"></div>
-            <div><button id="clearButton">clear</button></div>
-            
+            <div id="frameBottom">
+                <div id = clearButtonSection>
+                    <button id="clearButton">clear</button>
+                </div>
+                <div id ="sliderSection">
+                    <div id="slider"><input type="range" value="8" min="1" max="8" id="rangeSlider"></div>
+                    <div id="sliderDisplay">Grid Size: <span id=containerH>640</span> x <span id=containerW>880</span></div>
+                </div>
+            </div>
+
         </div>
         <!-- <div id="penline1"></div> -->
-        <div id="penObject">
-            <div id="penTipOuter">
-                <div id="penTip"></div>
+        <div id="penSpace">
+            <div id="penObject">
+                <div id="penTipOuter">
+                    <div id="penTip" class="penTipBlack"></div>
+                </div>
+
+                <div id="penBody">
+                    <div><button id="blackButton"></button></div>
+                    <div><input type="color" id="colorPicker" value="#ffffff"></div>
+                    <div><button id="randColorButton"></button></div>
+                    <div><button id="eraserButton">Eraser</button></div>
+                </div>
+                <div id="eraserEnd"></div>
             </div>
-            <div id="penBody">
-                <div><button id="blackButton">Black</button></div>
-                <div><input type="color" id="colorPicker" value="#ffffff"></div>
-                <div><button id="randColorButton">Random</button></div>
-                <div><button id="eraserButton">Eraser</button></div>
-            </div>
-            <div id="eraserEnd"></div>
         </div>
+
     </div>
 </body>
 

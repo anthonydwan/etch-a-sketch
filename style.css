@@ -4,10 +4,20 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+    background-image: url(images/background.jpg);
+}
+
 #entireObject{
-    display: flex;
+    display: table;
+    width: 880px;
+    display: grid;
+    grid-template-columns: 950px;
+    grid-template-rows: 700px 140px;
     margin: 100px auto;
 }
+
+/* the main drawing board */
 
 #frame{
     display: grid;
@@ -17,11 +27,22 @@
     width: 880px;
     background-color: royalblue;
     border-radius: 3em;
-    box-shadow: 2px 4px 10px black;
+    box-shadow: 2px 4px 20px black;
 }
 
-#header{
-    margin: 0 auto;
+#frameTop{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+}
+
+h1{
+    position: relative;
+    top: 20px;
+    display: inline-block;
+    margin: auto;
+    height: 50%;
 }
 
 #container{
@@ -29,15 +50,107 @@
     width: 704px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(88, 1fr);
-    grid-template-rows: repeat(64, 1fr);
     background-color: rgb(220, 220, 220);
+    border: 4px solid grey;
+}
+
+.squareDiv{
+    transition: all 0.2s ease-in-out;
+    pointer-events:visible;
+    border-top:1px solid rgb(190, 190, 190);
+    border-left: 1px solid rgb(190, 190, 190);
+}
+
+
+
+.squareDiv:hover{
+    background-color: black;
+}
+
+#frameBottom{
+    display:flex;
+    align-items: center;
+}
+
+#clearButtonSection{
+    position: relative;
+    height: 60px;
+    width: 80px;
+    left: 130px;
+}
+
+#clearButton{
+    height: 60px;
+    width: 100px;
+    top: -8px;
+    box-shadow: 4px 4px 0px grey;
+    font-size: 20px;
+}
+
+#sliderSection{
+    position: relative;
+    height: 100px;
+    left: 520px;
+}
+input[type=range]{
+    -webkit-appearance: none;
+    position: relative;
+    top: 20px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 35px;
+    width: 20px;
+    border-radius: 3px;
+    background: rgb(133, 131, 128);
+    margin-top: -12px;
+    margin-bottom: -12px;
+    box-shadow: 2px 2px 4px rgb(22, 22, 22);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 6px;
+    background-color: rgb(56, 55, 61);
+}
+
+
+
+#slider{
+    display: block;
+    position: relative;
+    height: 60px;
+    width: 150px;
+}
+
+#SliderDisplay{
+    position: relative;
+    display: block;
+    top: 100px;
+}
+
+/* the drawing pen */
+
+#penSpace{
+    height: 100%;
+    width: 880px;
 }
 
 #penObject{
+    width: 720px;
+    height: 48px;
+    position: relative;
+    margin: 46px auto;
     display: grid;
     grid-template-columns: 60px 600px 60px;
     grid-template-rows: 48px;
+}
+
+.penTipBlack{
+    border-right: 30px solid black;
+    transition: border-color 0.5s ease-in-out;
 }
 
 #penTip {
@@ -51,19 +164,17 @@
     border-bottom: 12px solid transparent;
     transition: border-color 0.5s ease-in-out;
     border-radius: 18px;
-};
-
-.penTipBlack{
-    border-right: 30px solid black;
-    transition: border-color 0.5s ease-in-out;
-};
+    z-index: 2;
+}
 
 .penTipRandomColor{
     animation: PenTipRandomColor 2s infinite;
     transition: border-color 0.5s ease-in-out;
-};
+}
 
- 
+.penTipRandomColorAnimationPause{
+    animation-play-state: paused;
+}
 
 @keyframes PenTipRandomColor {
     0% {border-right: 30px solid rgb(150, 9, 9)}
@@ -74,17 +185,14 @@
     100% {border-right: 30px solid rgb(158, 37, 37)}
 }
 
-.penTipRandomColorAnimationPause{
-    animation-play-state: paused;
-}
-
 #penTipOuter{
     position: relative;
     width: 0;
     height: 0;
     border-top: 24px solid transparent;
-    border-right: 60px solid rgb(180, 180, 180);
+    border-right: 60px solid rgb(206, 206, 206);
     border-bottom: 24px solid transparent;
+    z-index: 1;
 }
 
 #penBody{
@@ -95,7 +203,11 @@
     width: 596px;
     border-right: 4px solid black;
     height: 48px;
-    background-color: rgb(180, 180, 180);
+    background: linear-gradient(to bottom,
+    rgb(110, 110, 110) 5%,
+        rgb(180, 180, 180) 40%,
+        rgb(110, 110, 110)) 95%;
+    box-shadow: 3px 3px 10px black;
 }
 
 @keyframes eraserActivate {
@@ -113,6 +225,7 @@
     width: 48px;
     border-radius: 48px 48px 0 0;
     background-color: rgb(220, 220, 220);
+    box-shadow: 3px 0px 10px black;
 }
 
 .eraserActivated{
@@ -132,13 +245,22 @@ button{
 }
 
 #colorPicker{
-    position: absolute;
+    position: relative;
     border-radius: 5px;
     height: 30px;
     width: 60px;
+    left: 6px;
     border: 0;
     margin-top : 8px;
     margin-bottom: 2px;
+    box-shadow: 2px 2px 0 rgb(107, 107, 107);
+    transition: all 0.2s ease-in-out;
+}
+
+#colorPicker:hover{
+    margin-top: 6px;
+    margin-bottom: 4px;
+    box-shadow: 2px 4px 0 rgb(124, 124, 124);
 }
 
 button:hover{
@@ -149,6 +271,14 @@ button:hover{
 
 #blackButton{
     left: 30px;
+    background: linear-gradient(to bottom right,
+     grey, black 20%, black 70%, grey 80%, black);
+}
+
+#randColorButton{
+    background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
 }
 
 button:hover{
@@ -157,16 +287,10 @@ button:hover{
     box-shadow: 2px 4px 0 rgb(124, 124, 124);
 }
 
-.squareDiv{
-    transition: all 0.2s ease-in-out;
-    pointer-events:visible;
-    border-top:1px solid rgb(190, 190, 190);
-    border-left: 1px solid rgb(190, 190, 190);
+#eraserButton{
+    left: 500px;
 }
 
-.squareDiv:hover{
-    background-color: black;
-}
 
 
 

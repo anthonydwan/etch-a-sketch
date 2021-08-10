@@ -7,13 +7,18 @@ const originalColor = "rgb(220, 220, 220)";
 const eraserEnd = document.querySelector("#eraserEnd")
 const penTip = document.querySelector("#penTip")
 const colorPicker = document.querySelector("#colorPicker")
+let rangeSlider = document.querySelector("#rangeSlider")
+let containerH = document.querySelector("#containerH")
+let containerW = document.querySelector("#containerW")
 let pickedColor = "#000000"
 
 let currentDrawColor = "black";
 let currentPenTipColor = "black";
 
-function makeDiv(color, colorHover) {
-    for (let i = 0; i < 64 * 88; i++) {
+function makeDiv(color, colorHover, range) {
+    container.style.gridTemplateColumns = `repeat(${range*11}, 1fr)`
+    container.style.gridTemplateRows = `repeat(${range*8}, 1fr)`
+    for (let i = 0; i < range*8 * range*11; i++) {
         const square = document.createElement("div");
         square.classList.add("squareDiv");
         square.setAttribute('draggable', 'false');
@@ -21,6 +26,8 @@ function makeDiv(color, colorHover) {
         square.addEventListener("mouseenter", colorHover);
         container.appendChild(square);
     };
+    containerH.textContent = range*8
+    containerW.textContent = range*11
 };
 
 function draw(color, colorHover) {
@@ -82,8 +89,8 @@ function removePrevListeners(obj) {
         case "eraser":
             obj.removeEventListener("mousedown", makeEraser);
             obj.removeEventListener("mouseenter", makeEraserHover);
-            eraserEnd.classList.remove("eraserActivated")
-            penTip.classList.remove("penTipRandomColorAnimationPause")
+            eraserEnd.classList.remove("eraserActivated");
+            penTip.classList.remove("penTipRandomColorAnimationPause");
             break;
     };
 };
@@ -160,7 +167,7 @@ function makeEraserHover(e) {
     };
 };
 
-makeDiv(makeBlack, makeBlackHover);
+makeDiv(makeBlack, makeBlackHover, rangeSlider.value);
 
 clearButton.addEventListener('click', clearAll);
 randColorButton.addEventListener('click', () => changeRandomColor());
@@ -171,3 +178,11 @@ colorPicker.addEventListener('change', function(){
     changePickedColor();
 });
 
+rangeSlider.addEventListener('change', changeRange);
+
+function changeRange(){
+    clearAll();
+    console.log(rangeSlider.value)
+    container.innerHTML = '';
+    makeDiv(makeBlack, makeBlackHover, rangeSlider.value);
+}
